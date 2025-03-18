@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
+import Posts from "./components/Posts";
 
 function App() {
   // normal variable
@@ -9,8 +10,8 @@ function App() {
   // react state
   const [age, setAge] = useState(50);
   const [favSub, setFavSubject] = useState("English");
-  const [success, setSuccess] = useState(false)
-  const [message, setMessage] = useState("")
+  const [success, setSuccess] = useState(false);
+  const [message, setMessage] = useState("");
 
   // useState =>  manage states
   // useEffect => manage side effects
@@ -23,31 +24,19 @@ function App() {
   // 1. callback function
   // 2. dependency array/injection
 
-  // useEffect(() => {
-  //     // all of your logics here
-  //     fetch("https://jsonplaceholder.typicode.com/posts")
-  //       .then((res) => res.json())
-  //       .then((result) => console.log(result));
-  //   },
-  //   [
-  //     // you have to add state or functions or any values here
-  //     // which will help us to re-render the component and re-run the useEffect
-  //   ]
-  // );
 
 
+  // useEffect(()=>{
+  //   if(success){
+  //     console.log("success")
+  //     setMessage("The request was successful")
+  //   }else{
+  //     console.log("not success")
+  //     setMessage("The request was not successful")
+  //   }
+  // },[success])
 
-  useEffect(()=>{
-    if(success){
-      console.log("success")
-      setMessage("The request was successful")
-    }else{
-      console.log("not success")
-      setMessage("The request was not successful")
-    }
-  },[success])
-
-  console.log(success, message)
+  console.log(success, message);
 
   const increaseAge = () => {
     setAge(age + 1);
@@ -77,12 +66,13 @@ function App() {
         setFavSubject={setFavSubject}
       /> */}
 
+      {/* conditional rendering 
+      <h1>{message}</h1>
+      <button onClick={() => setSuccess(true)}>Success</button>
+      <button onClick={() => setSuccess(false)}>Fail</button>
+      */}
 
-
-        {/* conditional rendering */}
-        <h1>{message}</h1>
-        <button onClick={() => setSuccess(true)}>Success</button>
-        <button onClick={() => setSuccess(false)}>Fail</button>
+     <Posts />
     </div>
   );
 }
